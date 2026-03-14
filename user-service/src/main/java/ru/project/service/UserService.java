@@ -17,6 +17,16 @@ public class UserService {
         this.repository = repository;
     }
 
+
+    public User findById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+    }
+
+    public List<User> findAll() {
+        return repository.findAll();
+    }
+
     public UserResponseDto create(UserRequestDto dto) {
         User user = new User();
         user.setName(dto.getName());
