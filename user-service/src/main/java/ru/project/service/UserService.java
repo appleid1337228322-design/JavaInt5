@@ -42,17 +42,6 @@ public class UserService {
         return response;
     }
 
-    public List<UserResponseDto> getAll() {
-        return repository.findAll().stream().map(user -> {
-            UserResponseDto dto = new UserResponseDto();
-            dto.setId(user.getId());
-            dto.setName(user.getName());
-            dto.setEmail(user.getEmail());
-            dto.setAge(user.getAge());
-            return dto;
-        }).toList();
-    }
-
     public void delete(Long id) {
         repository.deleteById(id);
     }
